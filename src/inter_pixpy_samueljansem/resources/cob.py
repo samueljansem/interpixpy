@@ -1,4 +1,4 @@
-from inter_pixpy_samueljansem.core.pixpy_base import PixPyBase
+from inter_pixpy_samueljansem.core import PixPyBase
 
 
 class Cob(PixPyBase):

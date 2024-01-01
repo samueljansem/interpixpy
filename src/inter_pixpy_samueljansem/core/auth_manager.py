@@ -4,23 +4,21 @@ import requests
 
 from inter_pixpy_samueljansem.config.config import Config
 
-all_scopes = [
-    "cob.read",
-    "cob.write",
-    "cobv.read",
-    "cobv.write",
-    "pix.read",
-    "pix.write",
-    "webhook.read",
-    "webhook.write",
-]
-
 
 class AuthManager:
     __client_id = None
     __client_secret = None
     __grant_type = "client_credentials"
-    __scope = all_scopes.join(" ")
+    __scope = [
+        "cob.read",
+        "cob.write",
+        "cobv.read",
+        "cobv.write",
+        "pix.read",
+        "pix.write",
+        "webhook.read",
+        "webhook.write",
+    ].join(" ")
     __access_token = None
     __token_type = None
     __token_expiration_date = None

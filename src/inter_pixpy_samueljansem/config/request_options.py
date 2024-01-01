@@ -1,5 +1,5 @@
-from inter_pixpy_samueljansem.config.config import Config
-from inter_pixpy_samueljansem.core.auth_manager import AuthManager
+from inter_pixpy_samueljansem.config import Config
+from inter_pixpy_samueljansem.core import AuthManager
 
 
 class RequestOptions:

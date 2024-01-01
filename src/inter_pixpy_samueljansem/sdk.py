@@ -1,8 +1,6 @@
-from inter_pixpy_samueljansem.config.request_options import RequestOptions
-from inter_pixpy_samueljansem.http.http_client import HttpClient
-from inter_pixpy_samueljansem.resources import Cob, Cobv
-from inter_pixpy_samueljansem.resources.pix import Pix
-from inter_pixpy_samueljansem.resources.webhook import Webhook
+from inter_pixpy_samueljansem.config import RequestOptions
+from inter_pixpy_samueljansem.http import HttpClient
+from inter_pixpy_samueljansem.resources import Cob, Cobv, Pix, Webhook
 
 
 class SDK:
