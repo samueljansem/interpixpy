@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "inter_pixpy_samueljansem"
+version = "0.0.1"
+authors = [
+    { name="Samuel Jansem", email="samuel.jansem@gmail.com" },
+]
+description = "A Python package to interact with the Banco Inter's Pix API"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = ["pix", "inter", "bank", "api", "python", "sdk"]
+dependencies = [
+    
+]
+
+[project.urls]
+Homepage = "https://github.com/samueljansem/inter-pixpy"
+Issues = "https://github.com/samueljansem/inter-pixpy/issues"
