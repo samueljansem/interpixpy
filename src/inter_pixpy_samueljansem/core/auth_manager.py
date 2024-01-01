@@ -42,7 +42,7 @@ class AuthManager:
             "scope": self.scope,
         }
         response = requests.post(
-            f"{self.config.api_base_url}/oauth/v2/token",
+            url=f"{self.config.api_base_url}/oauth/v2/token",
             data=data,
             headers={"Content-Type": self.config.mime_form},
         )
