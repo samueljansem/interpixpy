@@ -20,16 +20,28 @@ class SDK:
         self.request_options = request_options or RequestOptions()
 
     def cob(self, request_options=None):
-        return Cob(request_options or self.request_options, self.http_client)
+        return Cob(
+            request_options or self.request_options,
+            self.http_client,
+        )
 
     def cobv(self, request_options=None):
-        return Cobv(request_options or self.request_options, self.http_client)
+        return Cobv(
+            request_options or self.request_options,
+            self.http_client,
+        )
 
     def pix(self, request_options=None):
-        return Pix(request_options or self.request_options, self.http_client)
+        return Pix(
+            request_options or self.request_options,
+            self.http_client,
+        )
 
     def webhook(self, request_options=None):
-        return Webhook(request_options or self.request_options, self.http_client)
+        return Webhook(
+            request_options or self.request_options,
+            self.http_client,
+        )
 
     @property
     def request_options(self):
