@@ -29,6 +29,13 @@ jobs:
           python3 -m pip install setuptools wheel twine
           python3 setup.py install
 
+      # Clear previous builds
+      - name: Clear previous builds
+        run: |
+          rm -rf build/
+          rm -rf dist/
+          rm -rf *.egg-info/
+
       # Build and Publish package
       - name: Build and Publish distribution 📦 to PyPI
         run: |
