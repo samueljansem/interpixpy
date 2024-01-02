@@ -4,7 +4,13 @@ from urllib3.util import Retry
 
 
 class HttpClient:
+    def __init__(self, auth_manager):
+        self.__auth_manager = auth_manager
+
     def request(self, method, url, max_retries=None, **kwargs):
+        headers = kwargs.get("headers", {})
+        headers["Authorization"] = self.__auth_manager.get_authorization()
+        kwargs["headers"] = headers
         retry_strategy = Retry(
             total=max_retries,
             status_forcelist=[429, 500, 502, 503, 504],
