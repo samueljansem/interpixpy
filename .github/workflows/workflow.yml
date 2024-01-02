@@ -32,7 +32,6 @@ jobs:
       # Clear previous builds
       - name: Clear previous builds
         run: |
-          ls dist/
           rm -rf build/
           rm -rf dist/
           rm -rf *.egg-info/
