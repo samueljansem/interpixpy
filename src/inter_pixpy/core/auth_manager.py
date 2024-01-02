@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timedelta
 
 import requests
 
@@ -53,13 +53,14 @@ class AuthManager:
             ),
         )
         response.raise_for_status()
-        response = response.json()
 
-        self.__token_type = response["token_type"]
-        self.__access_token = response["access_token"]
-        self.__expires_in = response["expires_in"]
+        json_response = response.json()
 
-        self.__expires_at = datetime.now() + datetime.timedelta(
+        self.__token_type = json_response["token_type"]
+        self.__access_token = json_response["access_token"]
+        self.__expires_in = json_response["expires_in"]
+
+        self.__expires_at = datetime.now() + timedelta(
             seconds=self.__expires_in,
         )
 

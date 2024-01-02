@@ -33,9 +33,6 @@ class PixPyBase:
         if request_options is None:
             request_options = self.request_options
 
-        if request_options.access_token is None:
-            request_options.access_token = self.request_options.access_token
-
         return request_options
 
     def __check_headers(self, request_options, extra_header=None):
@@ -56,7 +53,7 @@ class PixPyBase:
         return self.http_client.get(
             url=self.config.api_base_url + uri,
             headers=headers,
-            timeout=request_options.timeout,
+            timeout=request_options.connection_timeout,
             max_retries=request_options.max_retries,
         )
 
@@ -73,7 +70,7 @@ class PixPyBase:
             url=self.config.api_base_url + uri,
             data=data,
             headers=headers,
-            timeout=request_options.timeout,
+            timeout=request_options.connection_timeout,
             max_retries=request_options.max_retries,
         )
 
@@ -90,7 +87,7 @@ class PixPyBase:
             url=self.config.api_base_url + uri,
             data=data,
             headers=headers,
-            timeout=request_options.timeout,
+            timeout=request_options.connection_timeout,
             max_retries=request_options.max_retries,
         )
 
@@ -107,7 +104,7 @@ class PixPyBase:
             url=self.config.api_base_url + uri,
             data=data,
             headers=headers,
-            timeout=request_options.timeout,
+            timeout=request_options.connection_timeout,
             max_retries=request_options.max_retries,
         )
 
@@ -118,7 +115,7 @@ class PixPyBase:
         return self.http_client.delete(
             url=self.config.api_base_url + uri,
             headers=headers,
-            timeout=request_options.timeout,
+            timeout=request_options.connection_timeout,
             max_retries=request_options.max_retries,
         )
 
