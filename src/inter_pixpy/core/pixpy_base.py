@@ -1,8 +1,8 @@
 from json.encoder import JSONEncoder
 
-from inter_pixpy_samueljansem.config.config import Config
-from inter_pixpy_samueljansem.config.request_options import RequestOptions
-from inter_pixpy_samueljansem.http.http_client import HttpClient
+from inter_pixpy.config.config import Config
+from inter_pixpy.config.request_options import RequestOptions
+from inter_pixpy.http.http_client import HttpClient
 
 
 class PixPyBase:

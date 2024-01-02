@@ -1,4 +1,4 @@
-from inter_pixpy_samueljansem.config import Config
+from inter_pixpy.config import Config
 
 
 class RequestOptions:
