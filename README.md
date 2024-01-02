@@ -21,7 +21,7 @@ sdk = interpixpy.SDK(
     client_id="your_app_client_id",
     client_secret="your_app_client_secret",
     grant_type="grant_type",
-    scope="your_app_scope"
+    scope="your_app_scope",
 )
 
 cob_payload = {
