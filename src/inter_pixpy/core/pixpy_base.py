@@ -46,12 +46,13 @@ class PixPyBase:
 
         return headers
 
-    def _get(self, uri, request_options=None):
+    def _get(self, uri, params, request_options=None):
         request_options = self.__check_request_options(request_options)
         headers = self.__check_headers(request_options)
 
         return self.http_client.get(
             url=self.config.api_base_url + uri,
+            params=params,
             headers=headers,
             timeout=request_options.connection_timeout,
             max_retries=request_options.max_retries,
