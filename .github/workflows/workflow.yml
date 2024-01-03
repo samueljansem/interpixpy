@@ -1,4 +1,4 @@
-name: Publish Python 🐍 distributions 📦 to PyPI
+name: 📦 Publish inter-pixpy to PyPI
 
 on:
   push:
@@ -10,15 +10,13 @@ on:
 
 jobs:
   build-n-publish:
-    name: Build and publish Python 🐍 distributions 📦 to PyPI
     runs-on: ubuntu-latest
     steps:
       # Checkout the repository
       - uses: actions/checkout@v2
 
       # Set up Python
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - uses: actions/setup-python@v2
         with:
           python-version: 3.7
 
@@ -37,7 +35,7 @@ jobs:
           rm -rf *.egg-info/
 
       # Build and Publish package
-      - name: Build and Publish distribution 📦 to PyPI
+      - name: Builds and uploads inter-pixpy to PyPI
         run: |
           python3 setup.py sdist bdist_wheel
           python3 -m twine check dist/*
