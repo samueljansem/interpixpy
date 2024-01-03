@@ -1,3 +1,5 @@
+from json import JSONDecodeError
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util import Retry
@@ -19,10 +21,18 @@ class HttpClient:
         http.mount("https://", HTTPAdapter(max_retries=retry_strategy))
         with http as session:
             results = session.request(method, url, **kwargs)
-            response = {
-                "status_code": results.status_code,
-                "results": results.json(),
-            }
+            try:
+                response = {
+                    "status_code": results.status_code,
+                    "data": results.json(),
+                    "body": results.text,
+                }
+            except JSONDecodeError:
+                response = {
+                    "status_code": results.status_code,
+                    "data": None,
+                    "body": results.text,
+                }
 
         return response
 
