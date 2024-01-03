@@ -2,8 +2,8 @@ from inter_pixpy.core import PixPyBase
 
 
 class Cob(PixPyBase):
-    def all(self, request_options=None):
-        return self._get("/pix/v2/cob", request_options)
+    def all(self, params, request_options=None):
+        return self._get("/pix/v2/cob", params, request_options)
 
     def find(self, txid, request_options=None):
         return self._get(f"/pix/v2/cob/{txid}", request_options)
