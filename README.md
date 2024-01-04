@@ -22,21 +22,19 @@ sdk = interpixpy.SDK(
     client_secret="your_app_client_secret",
     grant_type="grant_type",
     scope="your_app_scope",
+    cert_path="path_to_your_cert_file",
+    key_path="path_to_your_key_file",
 )
 
 cob_payload = {
-    "calendario": {
-        "expiracao": 3600
-    },
+    "calendario": {"expiracao": 3600},
     "devedor": {
         "cpf": "00000000000",
-        "nome": "Fulano de Tal"
+        "nome": "Xoblinha da Silva",
     },
-    "valor": {
-        "original": "100.00"
-    },
-    "chave": "00000000000", # Chave Pix do recebedor
-    "solicitacaoPagador": "Pagamento dos serviços prestados."
+    "valor": {"original": "100.00"},
+    "chave": "99999999999999",
+    "solicitacaoPagador": "Pagamento dos serviços prestados.",
 }
 
 result = sdk.cob().create(cob_payload)
