@@ -15,14 +15,18 @@ class SDK:
         key_path,
     ):
         self.__auth_manager = AuthManager(
-            client_id,
-            client_secret,
-            grant_type,
-            scope,
-            cert_path,
-            key_path,
+            client_id=client_id,
+            client_secret=client_secret,
+            grant_type=grant_type,
+            scope=scope,
+            cert_path=cert_path,
+            key_path=key_path,
         )
-        self.__http_client = HttpClient(auth_manager=self.__auth_manager)
+        self.__http_client = HttpClient(
+            auth_manager=self.__auth_manager,
+            cert_path=cert_path,
+            key_path=key_path,
+        )
         self.__request_options = RequestOptions()
 
     def cob(self, request_options=None):

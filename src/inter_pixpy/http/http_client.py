@@ -6,8 +6,10 @@ from urllib3.util import Retry
 
 
 class HttpClient:
-    def __init__(self, auth_manager):
+    def __init__(self, auth_manager, cert_path, key_path):
         self.__auth_manager = auth_manager
+        self.__cert_path = cert_path
+        self.__key_path = key_path
 
     def request(self, method, url, max_retries=None, **kwargs):
         headers = kwargs.get("headers", {})
@@ -20,7 +22,9 @@ class HttpClient:
         http = requests.Session()
         http.mount("https://", HTTPAdapter(max_retries=retry_strategy))
         with http as session:
-            results = session.request(method, url, **kwargs)
+            results = session.request(
+                method, url, cert=(self.__cert_path, self.__key_path), **kwargs
+            )
             try:
                 response = {
                     "status_code": results.status_code,
