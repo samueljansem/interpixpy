@@ -1,8 +1,8 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="interpixpy",
-    version="0.0.1",
+    name="inter-pixpy",
+    version="0.0.4",
     description="A Python package to interact with the Banco Inter's Pix API",
     author="Samuel Jansem",
     author_email="samuel.jansem@gmail.com",
