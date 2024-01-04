@@ -9,7 +9,7 @@ Python 3 or higher
 ## Installation
 
 ```bash
-pip install inter-pixpy
+pip install interpixpy
 ```
 
 ## Usage

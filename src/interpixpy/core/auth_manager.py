@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 import requests
 
-from inter_pixpy.config import Config
+from interpixpy.config import Config
 
 
 class AuthManager:

@@ -1,12 +1,12 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="inter_pixpy",
-    version="0.0.3",
+    name="interpixpy",
+    version="0.0.1",
     description="A Python package to interact with the Banco Inter's Pix API",
     author="Samuel Jansem",
     author_email="samuel.jansem@gmail.com",
-    url="https://github.com/samueljansem/inter-pixpy",
+    url="https://github.com/samueljansem/interpixpy",
     license="MIT",
     keywords=["pix", "inter", "bank", "api", "python", "sdk"],
     packages=find_packages(),
@@ -18,8 +18,8 @@ setup(
     ],
     python_requires=">=3",
     project_urls={
-        "Source Code": "https://github.com/samueljansem/inter-pixpy",
-        "Issues": "https://github.com/samueljansem/inter-pixpy/issues",
+        "Source Code": "https://github.com/samueljansem/interpixpy",
+        "Issues": "https://github.com/samueljansem/interpixpy/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",

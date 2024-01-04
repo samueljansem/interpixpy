@@ -1,4 +1,4 @@
-from inter_pixpy.core import PixPyBase
+from interpixpy.core import PixPyBase
 
 
 class Webhook(PixPyBase):
