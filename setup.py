@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="inter-pixpy",
-    version="0.0.5",
+    version="0.0.6",
     description="A Python package to interact with the Banco Inter's Pix API",
     author="Samuel Jansem",
     author_email="samuel.jansem@gmail.com",

@@ -5,17 +5,17 @@ class Config:
     __mime_form = "application/x-www-form-urlencoded"
 
     @property
-    def user_agent(self):
+    def user_agent(self) -> str:
         return self.__user_agent
 
     @property
-    def api_base_url(self):
+    def api_base_url(self) -> str:
         return self.__api_base_url
 
     @property
-    def mime_json(self):
+    def mime_json(self) -> str:
         return self.__mime_json
 
     @property
-    def mime_form(self):
+    def mime_form(self) -> str:
         return self.__mime_form

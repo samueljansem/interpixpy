@@ -15,7 +15,14 @@ class AuthManager:
         return cls._instance
 
     def __init__(
-        self, client_id, client_secret, grant_type, scope, cert_path, key_path
+        self,
+        *,
+        client_id: str,
+        client_secret: str,
+        grant_type: str,
+        scope: str,
+        cert_path: str,
+        key_path: str,
     ):
         if not self.initialized:
             self.client_id = client_id
@@ -64,7 +71,7 @@ class AuthManager:
             seconds=self.__expires_in,
         )
 
-    def get_authorization(self):
+    def get_authorization(self) -> str:
         if self.__expires_at < datetime.now():
             self.authenticate()
         return f"{self.__token_type} {self.__access_token}"

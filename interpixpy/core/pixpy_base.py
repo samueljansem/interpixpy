@@ -6,7 +6,12 @@ from interpixpy.http.http_client import HttpClient
 
 
 class PixPyBase:
-    def __init__(self, request_options, http_client):
+    def __init__(
+        self,
+        *,
+        request_options: RequestOptions,
+        http_client: HttpClient,
+    ):
         if not isinstance(request_options, RequestOptions):
             raise TypeError(
                 "request_options must be a RequestOptions instance",
@@ -21,7 +26,11 @@ class PixPyBase:
         self.__http_client = http_client
         self.__config = Config()
 
-    def __check_request_options(self, request_options):
+    def __check_request_options(
+        self,
+        *,
+        request_options: RequestOptions = None,
+    ) -> RequestOptions:
         if request_options is not None and not isinstance(
             request_options,
             RequestOptions,
@@ -35,7 +44,12 @@ class PixPyBase:
 
         return request_options
 
-    def __check_headers(self, request_options, extra_header=None):
+    def __check_headers(
+        self,
+        *,
+        request_options: RequestOptions = None,
+        extra_header: dict[str, str] = None,
+    ) -> dict[str, str]:
         headers = self.request_options.get_headers()
 
         if request_options is not None:
@@ -46,9 +60,17 @@ class PixPyBase:
 
         return headers
 
-    def _get(self, uri, params, request_options=None):
-        request_options = self.__check_request_options(request_options)
-        headers = self.__check_headers(request_options)
+    def _get(
+        self,
+        *,
+        uri: str,
+        params: dict,
+        request_options: RequestOptions = None,
+    ):
+        request_options = self.__check_request_options(
+            request_options=request_options,
+        )
+        headers = self.__check_headers(request_options=request_options)
 
         return self.http_client.get(
             url=self.config.api_base_url + uri,
@@ -58,13 +80,22 @@ class PixPyBase:
             max_retries=request_options.max_retries,
         )
 
-    def _post(self, uri, data=None, request_options=None):
+    def _post(
+        self,
+        *,
+        uri: str,
+        data: dict = None,
+        request_options: RequestOptions = None,
+    ):
         if data is not None:
             data = JSONEncoder().encode(data)
 
-        request_options = self.__check_request_options(request_options)
+        request_options = self.__check_request_options(
+            request_options=request_options,
+        )
         headers = self.__check_headers(
-            request_options, {"Content-Type": self.config.mime_json}
+            request_options=request_options,
+            extra_header={"Content-Type": self.config.mime_json},
         )
 
         return self.http_client.post(
@@ -75,13 +106,22 @@ class PixPyBase:
             max_retries=request_options.max_retries,
         )
 
-    def _patch(self, uri, data=None, request_options=None):
+    def _patch(
+        self,
+        *,
+        uri: str,
+        data: dict = None,
+        request_options: RequestOptions = None,
+    ):
         if data is not None:
             data = JSONEncoder().encode(data)
 
-        request_options = self.__check_request_options(request_options)
+        request_options = self.__check_request_options(
+            request_options=request_options,
+        )
         headers = self.__check_headers(
-            request_options, {"Content-Type": self.config.mime_json}
+            request_options=request_options,
+            extra_header={"Content-Type": self.config.mime_json},
         )
 
         return self.http_client.patch(
@@ -92,13 +132,22 @@ class PixPyBase:
             max_retries=request_options.max_retries,
         )
 
-    def _put(self, uri, data=None, request_options=None):
+    def _put(
+        self,
+        *,
+        uri: str,
+        data: dict = None,
+        request_options: RequestOptions = None,
+    ):
         if data is not None:
             data = JSONEncoder().encode(data)
 
-        request_options = self.__check_request_options(request_options)
+        request_options = self.__check_request_options(
+            request_options=request_options,
+        )
         headers = self.__check_headers(
-            request_options, {"Content-Type": self.config.mime_json}
+            request_options=request_options,
+            extra_header={"Content-Type": self.config.mime_json},
         )
 
         return self.http_client.put(
@@ -109,9 +158,11 @@ class PixPyBase:
             max_retries=request_options.max_retries,
         )
 
-    def _delete(self, uri, request_options=None):
-        request_options = self.__check_request_options(request_options)
-        headers = self.__check_headers(request_options)
+    def _delete(self, *, uri: str, request_options: RequestOptions = None):
+        request_options = self.__check_request_options(
+            request_options=request_options,
+        )
+        headers = self.__check_headers(request_options=request_options)
 
         return self.http_client.delete(
             url=self.config.api_base_url + uri,
@@ -121,13 +172,13 @@ class PixPyBase:
         )
 
     @property
-    def request_options(self):
+    def request_options(self) -> RequestOptions:
         return self.__request_options
 
     @property
-    def config(self):
+    def config(self) -> Config:
         return self.__config
 
     @property
-    def http_client(self):
+    def http_client(self) -> HttpClient:
         return self.__http_client

@@ -7,12 +7,13 @@ from interpixpy.resources import Cob, Cobv, Pix, Webhook
 class SDK:
     def __init__(
         self,
-        client_id,
-        client_secret,
-        grant_type,
-        scope,
-        cert_path,
-        key_path,
+        *,
+        client_id: str,
+        client_secret: str,
+        grant_type: str,
+        scope: str,
+        cert_path: str,
+        key_path: str,
     ):
         self.__auth_manager = AuthManager(
             client_id=client_id,
@@ -29,26 +30,26 @@ class SDK:
         )
         self.__request_options = RequestOptions()
 
-    def cob(self, request_options=None):
+    def cob(self, *, request_options: RequestOptions = None) -> Cob:
         return Cob(
-            request_options or self.__request_options,
-            self.__http_client,
+            request_options=request_options or self.__request_options,
+            http_client=self.__http_client,
         )
 
-    def cobv(self, request_options=None):
+    def cobv(self, *, request_options: RequestOptions = None) -> Cobv:
         return Cobv(
-            request_options or self.__request_options,
-            self.__http_client,
+            request_options=request_options or self.__request_options,
+            http_client=self.__http_client,
         )
 
-    def pix(self, request_options=None):
+    def pix(self, *, request_options: RequestOptions = None) -> Pix:
         return Pix(
-            request_options or self.__request_options,
-            self.__http_client,
+            request_options=request_options or self.__request_options,
+            http_client=self.__http_client,
         )
 
-    def webhook(self, request_options=None):
+    def webhook(self, *, request_options: RequestOptions = None) -> Webhook:
         return Webhook(
-            request_options or self.__request_options,
-            self.__http_client,
+            request_options=request_options or self.__request_options,
+            http_client=self.__http_client,
         )

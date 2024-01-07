@@ -9,10 +9,11 @@ class RequestOptions:
 
     def __init__(
         self,
-        conta_corrente=None,
-        connection_timeout=60,
-        max_retries=3,
-        custom_headers=None,
+        *,
+        conta_corrente: str = None,
+        connection_timeout: int = 60,
+        max_retries: int = 3,
+        custom_headers: dict[str, str] = None,
     ):
         if conta_corrente is not None:
             self.conta_corrente = conta_corrente
@@ -23,7 +24,7 @@ class RequestOptions:
 
         self.config = Config()
 
-    def get_headers(self):
+    def get_headers(self) -> dict[str, str]:
         headers = {
             "Content-Type": "application/json",
             "User-Agent": self.config.user_agent,
@@ -39,7 +40,7 @@ class RequestOptions:
         return headers
 
     @property
-    def conta_corrente(self):
+    def conta_corrente(self) -> str:
         return self.__conta_corrente
 
     @conta_corrente.setter
@@ -47,7 +48,7 @@ class RequestOptions:
         self.__conta_corrente = value
 
     @property
-    def custom_headers(self):
+    def custom_headers(self) -> dict[str, str]:
         return self.__custom_headers
 
     @custom_headers.setter
@@ -57,7 +58,7 @@ class RequestOptions:
         self.__custom_headers = value
 
     @property
-    def connection_timeout(self):
+    def connection_timeout(self) -> int:
         return self.__connection_timeout
 
     @connection_timeout.setter
@@ -67,7 +68,7 @@ class RequestOptions:
         self.__connection_timeout = value
 
     @property
-    def max_retries(self):
+    def max_retries(self) -> int:
         return self.__max_retries
 
     @max_retries.setter
@@ -77,7 +78,7 @@ class RequestOptions:
         self.__max_retries = value
 
     @property
-    def config(self):
+    def config(self) -> Config:
         return self.__config
 
     @config.setter

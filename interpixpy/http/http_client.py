@@ -4,14 +4,29 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util import Retry
 
+from interpixpy.core import AuthManager
+
 
 class HttpClient:
-    def __init__(self, auth_manager, cert_path, key_path):
+    def __init__(
+        self,
+        *,
+        auth_manager: AuthManager,
+        cert_path: str,
+        key_path: str,
+    ):
         self.__auth_manager = auth_manager
         self.__cert_path = cert_path
         self.__key_path = key_path
 
-    def request(self, method, url, max_retries=None, **kwargs):
+    def request(
+        self,
+        *,
+        method: str,
+        url: str,
+        max_retries: int = None,
+        **kwargs,
+    ):
         headers = kwargs.get("headers", {})
         headers["Authorization"] = self.__auth_manager.get_authorization()
         kwargs["headers"] = headers
@@ -42,12 +57,14 @@ class HttpClient:
 
     def get(
         self,
-        url,
-        headers,
-        data=None,
-        params=None,
-        timeout=None,
-        max_retries=None,
+        *,
+        url: str,
+        headers: dict[str, str] = None,
+        data: dict = None,
+        params: dict = None,
+        timeout: int = None,
+        max_retries: int = None,
+        **kwargs,
     ):
         return self.request(
             method="GET",
@@ -57,16 +74,19 @@ class HttpClient:
             params=params,
             timeout=timeout,
             max_retries=max_retries,
+            **kwargs,
         )
 
     def post(
         self,
-        url,
-        headers,
-        data=None,
-        params=None,
-        timeout=None,
-        max_retries=None,
+        *,
+        url: str,
+        headers: dict[str, str] = None,
+        data: dict = None,
+        params: dict = None,
+        timeout: int = None,
+        max_retries: int = None,
+        **kwargs,
     ):
         return self.request(
             method="POST",
@@ -76,16 +96,19 @@ class HttpClient:
             params=params,
             timeout=timeout,
             max_retries=max_retries,
+            **kwargs,
         )
 
     def put(
         self,
-        url,
-        headers,
-        data=None,
-        params=None,
-        timeout=None,
-        max_retries=None,
+        *,
+        url: str,
+        headers: dict[str, str] = None,
+        data: dict = None,
+        params: dict = None,
+        timeout: int = None,
+        max_retries: int = None,
+        **kwargs,
     ):
         return self.request(
             method="PUT",
@@ -95,16 +118,19 @@ class HttpClient:
             params=params,
             timeout=timeout,
             max_retries=max_retries,
+            **kwargs,
         )
 
     def delete(
         self,
-        url,
-        headers,
-        data=None,
-        params=None,
-        timeout=None,
-        max_retries=None,
+        *,
+        url: str,
+        headers: dict[str, str] = None,
+        data: dict = None,
+        params: dict = None,
+        timeout: int = None,
+        max_retries: int = None,
+        **kwargs,
     ):
         return self.request(
             method="DELETE",
@@ -114,4 +140,5 @@ class HttpClient:
             params=params,
             timeout=timeout,
             max_retries=max_retries,
+            **kwargs,
         )
