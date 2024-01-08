@@ -1,7 +1,7 @@
 from interpixpy.config import RequestOptions
 from interpixpy.core import AuthManager
 from interpixpy.http import HttpClient
-from interpixpy.resources import Cob, Cobv, Pix, Webhook
+from interpixpy.resources import Cob, Cobv, Location, Pix, Webhook
 
 
 class SDK:
@@ -38,6 +38,12 @@ class SDK:
 
     def cobv(self, *, request_options: RequestOptions = None) -> Cobv:
         return Cobv(
+            request_options=request_options or self.__request_options,
+            http_client=self.__http_client,
+        )
+
+    def location(self, *, request_options: RequestOptions = None) -> Location:
+        return Location(
             request_options=request_options or self.__request_options,
             http_client=self.__http_client,
         )
